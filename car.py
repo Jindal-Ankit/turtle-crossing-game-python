@@ -9,7 +9,7 @@ right_screen_size = SCREEN_SIZE[0]/2
 
 
 CAR_GENERATION_RANGE_X = (0 + right_screen_size/2, right_screen_size - 20)
-CAR_GENERATION_RANGE_Y = ( -1 * (SCREEN_SIZE[1] - 80), (SCREEN_SIZE[1] - 80))
+CAR_GENERATION_RANGE_Y = ( -1 * (SCREEN_SIZE[1]/2 - 80), (SCREEN_SIZE[1] /2- 80))
 class Car(Turtle):
     def __init__(self):
         super().__init__()
@@ -20,6 +20,7 @@ class Car(Turtle):
         self.setheading(180)
         self.starting_position()
         self.speed = STARTING_MOVEMENT_SPEED
+        print(CAR_GENERATION_RANGE_X, CAR_GENERATION_RANGE_Y)
 
     def starting_position(self):
         starting_position_x = random.randint(int(CAR_GENERATION_RANGE_X[0]),int(CAR_GENERATION_RANGE_X[1]))
@@ -32,3 +33,9 @@ class Car(Turtle):
 
     def level_up(self):
         self.speed += STARTING_MOVEMENT_SPEED
+
+    def is_crossed_screen(self):
+        if self.xcor() <= -1 * right_screen_size:
+            return True
+        else:
+            return False

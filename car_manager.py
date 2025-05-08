@@ -15,7 +15,12 @@ class CarManager:
     def move_cars(self):
         for car in self.cars:
             car.move()
+            if car.is_crossed_screen():
+                self.cars.remove(car)
+                car.hideturtle()
+                del car
 
     def level_up(self):
         for car in self.cars:
             car.level_up()
+

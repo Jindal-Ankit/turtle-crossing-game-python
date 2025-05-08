@@ -28,6 +28,7 @@ while game_is_on:
     time.sleep(0.1)
     screen.update()
     carmanager.create_car()
+    print(len(carmanager.cars))
     carmanager.move_cars()
 
     #detct collision turtle and car
